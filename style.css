@@ -1,0 +1,115 @@
+:root{
+    --clr-gold: #c59d5f;
+    --ff-primary: 'Great Vibes';
+    --ff-secondary: 'sans-serif';
+    --fs-big: 3rem;
+    --fs-medium: 1.5rem;
+    --fs-small:1rem;
+}
+
+*::before,
+*::after,
+*{
+    box-sizing: border-box;
+}
+
+body,
+html{
+    padding: 0%;
+    margin: 0%;
+    height: 100%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    padding: 1.5em;
+}
+
+.title{
+    text-align: center;
+    font-family: var(--ff-primary);
+    color: var(--clr-gold);
+    font-size: var(--fs-big);
+}
+
+.questions-list{
+    padding: 0px;
+}
+
+.question-container{
+    margin: 0px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr) repeat(3,30px) repeat(1,30px);
+    align-items: center;
+    grid-template-areas: 
+        "h h . . . b"
+        "a a a . . .";
+    margin-bottom: 1em;
+    padding: 1.5em;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.question-title{
+    margin: 0px;
+    grid-area: h;
+    font-size: var(--fs-medium);
+}
+
+.show-answer{
+    cursor: pointer;
+    color: var(--clr-gold);
+    border: 3px solid var(--clr-gold);
+    background-color: white;
+    grid-area: b;
+    text-align: center;
+    padding: 1em;
+    display: inline-block;
+    position: relative;
+    transition: transform 0.5s;
+}
+
+.show-answer:hover{
+    transform: rotate(90deg);
+}
+
+.show-answer::before{
+    content: '';
+    height: 15px;
+    width: 2px;
+    position: absolute;
+    border: 1px solid var(--clr-gold);
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.show-answer::after{
+    content: '';
+    position: absolute;
+    border: 1px solid var(--clr-gold);
+    height: 2px;
+    width: 15px;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.answer{
+    overflow: hidden;
+    height: 0px;
+    margin: 0em;
+    font-size: var(--fs-small);
+    grid-area: a;
+    transition: margin 1s, height 1s;
+}
+
+.shown{
+    height: auto;
+    margin-top: 1em;
+}
+
+.hide.show-answer::before {
+    display: none;
+}
